@@ -1,3 +1,7 @@
+# alphabet.index(letter) - If use this function the code line should be less
+# this can't encode the text with numbers
+# greater than alphabet numbers can't handle to the code
+
 from caesar_cipher_resources import alphabet
 from caesar_cipher_resources import characters
 from caesar_cipher_resources import logo
@@ -50,7 +54,7 @@ while run_again:
                     encripted_letters_list.append(characters[k-shift_number])
 
     # Encode function
-    def encode(message, shift_number):
+    def encode():
         for i in range(len(message)):
             if message[i] in alphabet:
                 letter_encode(i)
@@ -63,7 +67,7 @@ while run_again:
         print(f"Here's the encoded result: {encripted_letters_list_to_string}")
 
     # Decode function
-    def decode(message, shift_number):
+    def decode():
         for i in range(len(message)):
             if message[i] in alphabet:
                 letter_decode(i)
@@ -76,9 +80,9 @@ while run_again:
         print(f"Here's the decoded result: {encripted_letters_list_to_string}")
 
     if function.lower() == "encode":
-        encode(message = message, shift_number = shift_number)
+        encode()
     elif function.lower() == "decode":
-        decode(message = message, shift_number = shift_number)
+        decode()
     else:
         print("Please type correct answer")
 
