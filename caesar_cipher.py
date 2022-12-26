@@ -31,6 +31,24 @@ while run_again:
                 else:
                     encripted_letters_list.append(characters[k+shift_number])
 
+    # Decode letters
+    def letter_decode(i):
+        for j in range(len(alphabet)):
+            if alphabet[j] == message[i]:
+                if (j - shift_number) < 0:
+                    encripted_letters_list.append(alphabet[j-shift_number+26])
+                else:
+                    encripted_letters_list.append(alphabet[j-shift_number])
+
+    # Decode characters
+    def character_decode(i):
+        for k in range(len(characters)):
+            if characters[k] == message[i]:
+                if (k - shift_number) < 0:
+                    encripted_letters_list.append(characters[k-shift_number+32])
+                else:
+                    encripted_letters_list.append(characters[k-shift_number])
+
     # Encode function
     def encode(message, shift_number):
         for i in range(len(message)):
@@ -44,18 +62,18 @@ while run_again:
         encripted_letters_list_to_string = "".join(encripted_letters_list)
         print(f"Here's the encoded result: {encripted_letters_list_to_string}")
 
-    # Encode function
+    # Decode function
     def decode(message, shift_number):
         for i in range(len(message)):
             if message[i] in alphabet:
-                letter_encode(i)
+                letter_decode(i)
             elif message[i] == " ":
                 encripted_letters_list.append(" ")
             else:
-                character_encode(i)
+                character_decode(i)
         
         encripted_letters_list_to_string = "".join(encripted_letters_list)
-        print(f"Here's the encoded result: {encripted_letters_list_to_string}")
+        print(f"Here's the decoded result: {encripted_letters_list_to_string}")
 
     if function.lower() == "encode":
         encode(message = message, shift_number = shift_number)
@@ -69,5 +87,6 @@ while run_again:
     # Check user want to continue or exit
     if proceed == "yes":
         run_again = True
+        encripted_letters_list = []
     else:
         run_again = False
